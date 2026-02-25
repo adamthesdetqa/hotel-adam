@@ -3,7 +3,7 @@ import { ReservationInterface } from '../models/reservation';
 @Injectable({
   providedIn: 'root',
 })
-export class Reservations {
+export class ReservationsService {
 reservationsData! : ReservationInterface[];
 
 constructor() {

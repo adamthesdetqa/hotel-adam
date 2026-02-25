@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule,FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { checkOutAfterCheckIn } from '../validators/date.validators';
+import { ReservationsService } from '../services/reservations';
 
 @Component({
   selector: 'app-reservation-form',
@@ -13,6 +14,7 @@ today = new Date();
 tomorrow = new Date(this.today);
 reservationForm!: FormGroup;
 formBuilder: FormBuilder = inject(FormBuilder);
+reservastionService = inject(ReservationsService);
   /**
    * Initializes the reservation form with controls and validators.
    */
@@ -37,6 +39,7 @@ formBuilder: FormBuilder = inject(FormBuilder);
         numberOfGuests: this.reservationForm.value.numberOfGuests
       };
       console.log(this.reservationForm.value);
+      this.reservastionService.addReservation(newReservation);
     } else{
       console.log('Form is invalid');
       // console.log(this.reservationForm.get("guestEmail")?.errors);

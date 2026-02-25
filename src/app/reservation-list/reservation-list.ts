@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Reservations } from '../services/reservations';
+import { ReservationsService } from '../services/reservations';
 import { ReservationInterface } from '../models/reservation';
 
 @Component({
@@ -9,7 +9,7 @@ import { ReservationInterface } from '../models/reservation';
   styleUrl: './reservation-list.scss',
 })
 export class ReservationList implements OnInit {
-  reservationService = inject(Reservations);
+  reservationService = inject(ReservationsService);
   reservations: ReservationInterface[] = [];
 
   ngOnInit(): void {
