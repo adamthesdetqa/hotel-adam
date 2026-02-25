@@ -1,0 +1,122 @@
+.reservations-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+}
+
+.reservations-title {
+  color: #D4AF37;
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0 0 2rem 0;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.empty-state {
+  text-align: center;
+  color: #D4AF37;
+  font-size: 1.1rem;
+  padding: 3rem;
+  border: 1px dashed rgba(212, 175, 55, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #D4AF37;
+  background-color: #ffffff;
+}
+
+.reservations-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  thead {
+    background-color: #000000;
+    
+    tr {
+      th {
+        color: #D4AF37;
+        text-align: left;
+        padding: 1rem;
+        font-weight: 400;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+        border-bottom: 2px solid #D4AF37;
+      }
+    }
+  }
+  
+  tbody {
+    tr {
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: rgba(212, 175, 55, 0.05);
+      }
+      
+      td {
+        padding: 1rem;
+        color: #000000;
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid #D4AF37;
+  color: #D4AF37;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
+  
+  &:hover {
+    background-color: #228B22;
+    border-color: #228B22;
+    color: #000000;
+  }
+  
+  &.delete-button:hover {
+    background-color: #8B0000;
+    border-color: #8B0000;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 768px) {
+  .reservations-container {
+    margin: 2rem 1rem;
+    padding: 1rem;
+  }
+  
+  .reservations-title {
+    font-size: 1.6rem;
+  }
+  
+  .table-wrapper {
+    font-size: 0.85rem;
+  }
+  
+  .reservations-table {
+    thead tr th,
+    tbody tr td {
+      padding: 0.75rem 0.5rem;
+    }
+  }
+  
+  .action-button {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}

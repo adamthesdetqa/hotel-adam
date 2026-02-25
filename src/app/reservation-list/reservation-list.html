@@ -1,0 +1,38 @@
+<div class="reservations-container">
+  <h2 class="reservations-title">All Reservations</h2>
+  @if (reservations.length === 0) {
+    <div class="empty-state">
+      <p>No reservations yet. Create your first reservation to get started.</p>
+    </div>
+  } @else {
+    <div class="table-wrapper">
+      <table class="reservations-table">
+        <thead>
+          <tr>
+            <th>Guest Name</th>
+            <th>Guest Email</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+            <th>Number of Guests</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (reservation of reservations; track reservation.id) {
+            <tr>
+              <td>{{ reservation.guestName }}</td>
+              <td>{{ reservation.guestEmail }}</td>
+              <td>{{ reservation.checkInDate }}</td>
+              <td>{{ reservation.checkOutDate }}</td>
+              <td>{{ reservation.numberOfGuests }}</td>
+              <td class="actions-cell">
+                <button class="action-button edit-button">Modify</button>
+                <button class="action-button delete-button">Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

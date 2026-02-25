@@ -1,0 +1,58 @@
+<div class="form-container">
+  <h2 class="form-title">Create New Reservation</h2>
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()" class="reservation-form">
+    <div class="form-group">
+      <label for="guestName">Guest Name</label>
+      <input id="guestName" formControlName="guestName" type="text" />
+      @if (reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched) {
+        <span class="error-message">Guest name is required</span>
+      }
+    </div>
+    <div class="form-group">
+      <label for="guestEmail">Guest Email</label>
+      <input id="guestEmail" formControlName="guestEmail" type="email" />
+      @if (reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched) {
+        <span class="error-message">
+          @if (reservationForm.get('guestEmail')?.hasError('required')) {
+            <span>Email is required</span>
+          }
+          @if (reservationForm.get('guestEmail')?.hasError('email')) {
+            <span>Please enter a valid email address</span>
+          }
+        </span>
+      }
+    </div>
+    <div class="form-group">
+      <label for="checkInDate">Check-in Date</label>
+      <input id="checkInDate" formControlName="checkInDate" type="date" />
+      @if (reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched) {
+        <span class="error-message">Check-in date is required</span>
+      }
+    </div>
+    <div class="form-group">
+      <label for="checkOutDate">Check-out Date</label>
+      <input id="checkOutDate" formControlName="checkOutDate" type="date" />
+      @if (reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched) {
+        <span class="error-message">Check-out date is required</span>
+      }
+      @if (reservationForm.hasError('checkOutBeforeCheckIn') && reservationForm.get('checkOutDate')?.touched) {
+        <span class="error-message">Check-out date must be after check-in date</span>
+      }
+    </div>
+    <div class="form-group">
+      <label for="numberOfGuest">Number of Guests</label>
+      <input id="numberOfGuest" formControlName="numberOfGuests" type="number" />
+      @if (reservationForm.get('numberOfGuests')?.invalid && reservationForm.get('numberOfGuests')?.touched) {
+        <span class="error-message">
+          @if (reservationForm.get('numberOfGuests')?.hasError('required')) {
+            <span>Number of guests is required</span>
+          }
+          @if (reservationForm.get('numberOfGuests')?.hasError('min')) {
+            <span>Must be at least 1 guest</span>
+          }
+        </span>
+      }
+    </div>
+    <button type="submit" class="submit-button" [disabled]="reservationForm.invalid">Submit Reservation</button>
+  </form>
+</div>
