@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReservationsService } from '../services/reservations';
-import { ReservationInterface } from '../models/reservation';
 
 @Component({
   selector: 'app-reservation-list',
@@ -8,11 +7,7 @@ import { ReservationInterface } from '../models/reservation';
   templateUrl: './reservation-list.html',
   styleUrl: './reservation-list.scss',
 })
-export class ReservationList implements OnInit {
+export class ReservationList {
   reservationService = inject(ReservationsService);
-  reservations: ReservationInterface[] = [];
-
-  ngOnInit(): void {
-    this.reservations = this.reservationService.getReservations();
-  }
+  reservations = this.reservationService.reservationsData;
 }
