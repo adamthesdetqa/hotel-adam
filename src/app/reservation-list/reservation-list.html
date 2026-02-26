@@ -1,6 +1,6 @@
 <div class="reservations-container">
   <h2 class="reservations-title">All Reservations</h2>
-  @if (reservations.length === 0) {
+  @if (reservations().length === 0) {
     <div class="empty-state">
       <p>No reservations yet. Create your first reservation to get started.</p>
     </div>
@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (reservation of reservations; track reservation.id) {
+          @for (reservation of reservations(); track reservation.id) {
             <tr>
               <td>{{ reservation.guestName }}</td>
               <td>{{ reservation.guestEmail }}</td>
@@ -27,7 +27,7 @@
               <td>{{ reservation.numberOfGuests }}</td>
               <td class="actions-cell">
                 <button class="action-button edit-button">Modify</button>
-                <button class="action-button delete-button">Delete</button>
+                <button (click)="reservationService.deleteReservation(reservation.id)" class="action-button delete-button">Delete</button>
               </td>
             </tr>
           }
