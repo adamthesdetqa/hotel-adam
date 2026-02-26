@@ -44,7 +44,7 @@ export class ReservationForm implements OnInit {
     } else {
       console.log('Form is invalid');
     }
-
-
   }
 }
+
+//#TODO: move @if logic to the ts file and not in the html
