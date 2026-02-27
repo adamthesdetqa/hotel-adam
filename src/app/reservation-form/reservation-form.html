@@ -1,6 +1,6 @@
 <div class="form-container">
   <h2 class="form-title">Create New Reservation</h2>
-  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()" class="reservation-form">
+  <form [formGroup]="reservationForm" (ngSubmit)="!this.idQueryParam?onSubmit():onModify()" class="reservation-form">
     <div class="form-group">
       <label for="guestName">Guest Name</label>
       <input id="guestName" formControlName="guestName" type="text" />
@@ -53,6 +53,10 @@
         </span>
       }
     </div>
+    @if(idQueryParam) {
+      <button type="submit" class="submit-button" [disabled]="reservationForm.invalid">Update Reservation</button>
+    } @else {
     <button type="submit" class="submit-button" [disabled]="reservationForm.invalid">Submit Reservation</button>
+    }
   </form>
 </div>

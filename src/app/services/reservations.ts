@@ -22,12 +22,19 @@ export class ReservationsService {
     }
 
     deleteReservation(id: string) {
-        this.reservationsData.set(this.reservationsData().filter(reservation => reservation.id !== id))
-        const data = this.reservationsData() || [];
-        localStorage.setItem('reservations', JSON.stringify(data));
+        if (confirm('Are you sure you want to delete this reservation?')) {
+            this.reservationsData.set(this.reservationsData().filter(reservation => reservation.id !== id))
+            const data = this.reservationsData() || [];
+            localStorage.setItem('reservations', JSON.stringify(data));
+        }
+    }
+    getReservation(id: string): ReservationInterface | undefined {
+        console.log('Getting reservation with id:', id);
+        return this.reservationsData().find(reservation => reservation.id === id);
     }
 
     updateReservation(updatedReservation: ReservationInterface) {
+        console.log('Updating to reservation:', updatedReservation);
         const index = this.reservationsData().findIndex(reservation => reservation.id === updatedReservation.id);
         if (index !== -1) {
             this.reservationsData()[index] = updatedReservation;

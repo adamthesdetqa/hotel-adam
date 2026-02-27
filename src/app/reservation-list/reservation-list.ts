@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ReservationsService } from '../services/reservations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-list',
@@ -9,5 +10,8 @@ import { ReservationsService } from '../services/reservations';
 })
 export class ReservationList {
   reservationService = inject(ReservationsService);
-  reservations = this.reservationService.reservationsData;
+  router = inject(Router);
+ onEdit(id:string){
+    this.router.navigate(['/reservationform'], { queryParams: {id : id } });
+  } reservations = this.reservationService.reservationsData;
 }
