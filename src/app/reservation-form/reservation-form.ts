@@ -26,6 +26,7 @@ export class ReservationForm implements OnInit {
    */
   ngOnInit(): void {
     this.tomorrow.setDate(this.today.getDate() + 1);
+    //should this be in an if?
     this.reservationForm = this.formBuilder.group({
       guestName: ['', Validators.required],
       guestEmail: ['adam@adam.com', [Validators.required, Validators.email]],

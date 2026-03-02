@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class ReservationList {
   reservationService = inject(ReservationsService);
+  reservations = this.reservationService.reservationsData;
   router = inject(Router);
- onEdit(id:string){
-    this.router.navigate(['/reservationform'], { queryParams: {id : id } });
-  } reservations = this.reservationService.reservationsData;
+  onEdit(id: string) {
+    this.router.navigate(['/reservationform'], { queryParams: { id: id } });
+  }
 }
